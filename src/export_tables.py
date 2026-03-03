@@ -3,12 +3,11 @@ Export all generated tables to data/tables.xlsx.
 
 Sheets
 ------
-  1. Gap Summary           — daily & weekly free-time totals, existing vs proposed
-  2. Simulation - Existing — per-day free-time stats + weekly summary + class-load stats
-  3. Simulation - Proposed — same for proposed schedule
-  4. Block Mapping         — existing → proposed nearest-block mapping with distances
-  5. Course Distribution   — 500-course allocation for existing and proposed
-  6. Student Analysis      — full existing vs proposed comparison (1,500 students each)
+  1. Simulation - Existing — per-day free-time stats + weekly summary + class-load stats
+  2. Simulation - Proposed — same for proposed schedule
+  3. Block Mapping         — existing → proposed nearest-block mapping with distances
+  4. Course Distribution   — 500-course allocation for existing and proposed
+  5. Student Analysis      — full existing vs proposed comparison (1,500 students each)
 """
 
 from __future__ import annotations
@@ -55,42 +54,6 @@ def _pct(data: list, p: float) -> float:
 # ---------------------------------------------------------------------------
 # Table builders
 # ---------------------------------------------------------------------------
-
-def _gap_summary_df(existing: Schedule, proposed: Schedule) -> pd.DataFrame:
-    def day_totals(sched):
-        totals = {}
-        for day in DAY_ORDER:
-            blocks = sorted(
-                [b for b in sched.time_blocks if day in b.days],
-                key=lambda b: (b.start, b.end),
-            )
-            total = sum(
-                max(0, _mins(blocks[i + 1].start) - _mins(blocks[i].end))
-                for i in range(len(blocks) - 1)
-            )
-            totals[day] = total
-        return totals
-
-    ex_t = day_totals(existing)
-    pr_t = day_totals(proposed)
-
-    rows = [
-        {
-            "Day":            DAY_NAMES[day],
-            "Existing (min)": ex_t[day],
-            "Proposed (min)": pr_t[day],
-            "Delta (min)":    pr_t[day] - ex_t[day],
-        }
-        for day in DAY_ORDER
-    ]
-    rows.append({
-        "Day":            "Weekly Total",
-        "Existing (min)": sum(ex_t.values()),
-        "Proposed (min)": sum(pr_t.values()),
-        "Delta (min)":    sum(pr_t.values()) - sum(ex_t.values()),
-    })
-    return pd.DataFrame(rows)
-
 
 def _sim_day_df(sim) -> pd.DataFrame:
     rows = []
@@ -299,12 +262,7 @@ def main() -> None:
     print("Writing Excel…")
     with pd.ExcelWriter(OUT, engine="openpyxl") as writer:
 
-        # 1. Gap Summary
-        _gap_summary_df(existing, proposed).to_excel(
-            writer, sheet_name="Gap Summary", index=False
-        )
-
-        # 3 & 4. Simulation sheets
+        # 1 & 2. Simulation sheets
         for label, sim in [("Existing", ex_sim), ("Proposed", pr_sim)]:
             sheet = f"Simulation - {label}"
             df_day  = _sim_day_df(sim)
