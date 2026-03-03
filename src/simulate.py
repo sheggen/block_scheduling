@@ -2,7 +2,9 @@
 Monte Carlo simulation of student schedules.
 
 Assumptions:
-- Students only attend classes between 7am and 6pm, Monday–Friday.
+- Students prefer classes between 7am and 6pm, Monday–Friday (daytime window).
+- Evening blocks (weekday, start >= 7am, end after 6pm) are included but are
+  only 10% as likely to be chosen as a base daytime block.
 - Each student takes 3–5 classes, chosen randomly.
 - Blocks overlapping 10am–2pm are weighted up to 3× more likely to be chosen.
 - Blocks are chosen without conflict-checking; conflicting draws are counted
@@ -27,6 +29,9 @@ PEAK_START = time(10, 0)
 PEAK_END   = time(14, 0)
 PEAK_WEIGHT_MULTIPLIER = 3.0   # fully-inside-peak blocks are 3× more likely
 
+# Evening block selection probability (relative to base daytime weight of 1.0)
+EVENING_WEIGHT = 0.1
+
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -37,11 +42,19 @@ def _mins(t: time) -> int:
 
 
 def _eligible(block: TimeBlock) -> bool:
-    """True if the block falls entirely within 7am–6pm on weekdays only."""
+    """True if the block falls entirely within 7am–6pm on weekdays only (daytime)."""
     weekdays = set(DAY_ORDER)
     if not all(d in weekdays for d in block.days):
         return False
     return block.start >= STUDENT_DAY_START and block.end <= STUDENT_DAY_END
+
+
+def _evening_eligible(block: TimeBlock) -> bool:
+    """True if the block is a weekday block that starts after 7am but ends after 6pm."""
+    weekdays = set(DAY_ORDER)
+    if not all(d in weekdays for d in block.days):
+        return False
+    return block.start >= STUDENT_DAY_START and block.end > STUDENT_DAY_END
 
 
 def _block_weight(block: TimeBlock) -> float:
@@ -126,8 +139,10 @@ def run(schedule: Schedule, n: int = 10_000, seed: int | None = None) -> Simulat
     if seed is not None:
         random.seed(seed)
 
-    pool = [b for b in schedule.time_blocks if _eligible(b)]
-    weights = [_block_weight(b) for b in pool]
+    day_pool = [b for b in schedule.time_blocks if _eligible(b)]
+    eve_pool = [b for b in schedule.time_blocks if _evening_eligible(b)]
+    pool    = day_pool + eve_pool
+    weights = [_block_weight(b) for b in day_pool] + [EVENING_WEIGHT for b in eve_pool]
 
     n_conflicts = 0
     weekly_gaps: list[int] = []
@@ -193,7 +208,7 @@ def report(result: SimulationResult) -> None:
     print(f"Simulation: {result.schedule_name}   n={result.n_attempts:,} attempts")
     print("=" * 70)
 
-    print(f"\nEligible blocks : 7am–6pm, Mon–Fri only")
+    print(f"\nEligible blocks : Mon–Fri; daytime (7am–6pm) full weight, evening (after 6pm) at {EVENING_WEIGHT:.0%} weight")
     print(f"Conflict check  : {result.n_conflicts:,} of {result.n_attempts:,} schedules had overlapping blocks "
           f"({result.conflict_pct:.1f}%) — excluded from analysis")
     print(f"Valid schedules : {result.n_valid:,}")
