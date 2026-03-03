@@ -60,7 +60,7 @@
     {"name": "MWF 170min C",  "days": ["M","W","F"], "start": "15:00", "end": "17:50"},
     {"name": "MWF 170min D",  "days": ["M","W","F"], "start": "18:00", "end": "20:50"},
 
-    {"name": "TR 75min A",    "days": ["T","R"], "start": "08:45", "end": "10:10"},
+    {"name": "TR 75min A",    "days": ["T","R"], "start": "08:45", "end": "10:00"},
     {"name": "TR 75min B",    "days": ["T","R"], "start": "10:30", "end": "11:45"},
     {"name": "TR 75min C",    "days": ["T","R"], "start": "12:00", "end": "13:15"},
     {"name": "TR 75min D",    "days": ["T","R"], "start": "13:30", "end": "14:45"},
