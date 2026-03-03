@@ -41,6 +41,15 @@ def _mins(t: time) -> int:
     return t.hour * 60 + t.minute
 
 
+_SPECIALTY_KEYWORDS = ("extended", "experiential", "art studio")
+
+
+def _specialty(block: TimeBlock) -> bool:
+    """True if the block is a specialty type (extended, experiential lab, art studio)."""
+    lower = block.name.lower()
+    return any(k in lower for k in _SPECIALTY_KEYWORDS)
+
+
 def _eligible(block: TimeBlock) -> bool:
     """True if the block falls entirely within 7am–6pm on weekdays only (daytime)."""
     weekdays = set(DAY_ORDER)
@@ -143,10 +152,15 @@ def run(schedule: Schedule, n: int = 10_000, seed: int | None = None) -> Simulat
     if seed is not None:
         random.seed(seed)
 
-    day_pool = [b for b in schedule.time_blocks if _eligible(b)]
-    eve_pool = [b for b in schedule.time_blocks if _evening_eligible(b)]
-    pool    = day_pool + eve_pool
-    weights = [_block_weight(b) for b in day_pool] + [EVENING_WEIGHT for b in eve_pool]
+    day_pool  = [b for b in schedule.time_blocks if _eligible(b) and not _specialty(b)]
+    spec_pool = [b for b in schedule.time_blocks if _eligible(b) and _specialty(b)]
+    eve_pool  = [b for b in schedule.time_blocks if _evening_eligible(b)]
+    pool      = day_pool + spec_pool + eve_pool
+    weights   = (
+        [_block_weight(b) for b in day_pool]
+        + [EVENING_WEIGHT for b in spec_pool]
+        + [EVENING_WEIGHT for b in eve_pool]
+    )
 
     n_conflicts = 0
     weekly_gaps: list[int] = []
@@ -212,7 +226,7 @@ def report(result: SimulationResult) -> None:
     print(f"Simulation: {result.schedule_name}   n={result.n_attempts:,} attempts")
     print("=" * 70)
 
-    print(f"\nStudent work day: 7am–6pm, Mon–Fri; evening blocks (end after 6pm) also selectable at {EVENING_WEIGHT:.0%} weight")
+    print(f"\nStudent work day: 7am–6pm, Mon–Fri; specialty & evening blocks selectable at {EVENING_WEIGHT:.0%} weight")
     print(f"Conflict check  : {result.n_conflicts:,} of {result.n_attempts:,} schedules had overlapping blocks "
           f"({result.conflict_pct:.1f}%) — excluded from analysis")
     print(f"Valid schedules : {result.n_valid:,}")
