@@ -79,7 +79,7 @@ Used by `main.py` and `charts.py`.
 | Attempts per schedule | 10,000 |
 | Random seed | 42 |
 | Student workday | Mon–Fri, 8:00 am – 5:00 pm |
-| Class load | 3–5 courses (uniform random integer) |
+| Class load | 4–6 courses (uniform random integer) |
 | Daytime block eligibility | start ≥ 8:00 am and end ≤ 5:00 pm |
 | Evening block eligibility | ends after 5:00 pm (block extends into the evening, e.g. 4:00 pm – 7:00 pm) |
 | Selection weight | Historical course count, Fall 2016 – Fall 2020 (9 terms) |
@@ -98,7 +98,7 @@ Used by `analyze_student_schedules.py` and `charts_comparison.py`.
 | Course pool size | 500 courses per schedule |
 | Target valid schedules | 1,500 per schedule |
 | Random seed | 42 |
-| Class load | 3–5 courses (uniform random integer) |
+| Class load | 4–6 courses (uniform random integer) |
 | Selection weight | Same historical weights as above |
 | Proposed block weights | Inherited from the source block each proposed block was mapped from |
 | Conflict rule | Same as above (shared day + time overlap) |

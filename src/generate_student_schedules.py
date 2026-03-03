@@ -1,5 +1,5 @@
 """
-Generate 1,500 non-conflicting student schedules (3–5 classes each) from
+Generate 1,500 non-conflicting student schedules (4–6 classes each) from
 the 500-course pool, for both the existing and proposed schedule.
 
 Selection weights
@@ -172,7 +172,7 @@ def generate(
     n_conflicts = 0
 
     while len(valid) < target:
-        n_classes = rng.randint(3, 5)
+        n_classes = rng.randint(4, 6)
 
         # Draw unique indices via weighted sampling with oversampling
         seen: set[int] = set()
@@ -213,7 +213,7 @@ def _block_usage(schedules: list[list[Course]]) -> dict[str, int]:
 
 
 def _load_dist(schedules: list[list[Course]]) -> dict[int, int]:
-    dist: dict[int, int] = {3: 0, 4: 0, 5: 0}
+    dist: dict[int, int] = {4: 0, 5: 0, 6: 0}
     for s in schedules:
         dist[len(s)] = dist.get(len(s), 0) + 1
     return dist
@@ -237,7 +237,7 @@ def _print_comparison(label_a: str, ra: dict, label_b: str, rb: dict) -> None:
     print()
     print(f"{'Class load':<30} {label_a:>18} {label_b:>18}")
     print(f"{'-'*30} {'-'*18} {'-'*18}")
-    for n in (3, 4, 5):
+    for n in (4, 5, 6):
         pct_a = 100 * ra['class_load'][str(n)] / TARGET_VALID
         pct_b = 100 * rb['class_load'][str(n)] / TARGET_VALID
         row(f"  {n} classes",

@@ -7,7 +7,7 @@ Assumptions:
   historical course counts, the same as all other blocks.  Historically,
   evening blocks account for ~6.4% of all scheduled courses (222 of 3,472
   across Fall 2016–Fall 2020), so they are naturally selected at that rate.
-- Each student takes 3–5 classes, chosen randomly.
+- Each student takes 4–6 classes, chosen randomly.
 - Block selection is weighted by historical course counts aggregated across
   Fall 2016–Fall 2020 (9 terms) from the CAS scheduling database.
   Blocks absent from the historical data receive a small fallback weight.
@@ -174,10 +174,10 @@ def run(schedule: Schedule, n: int = 10_000, seed: int | None = None) -> Simulat
     n_conflicts = 0
     weekly_gaps: list[int] = []
     day_gaps: dict[str, list[int]] = {day: [] for day in DAY_ORDER}
-    class_mins_by_n: dict[int, list[int]] = {3: [], 4: [], 5: []}
+    class_mins_by_n: dict[int, list[int]] = {4: [], 5: [], 6: []}
 
     for _ in range(n):
-        n_classes = random.randint(3, 5)
+        n_classes = random.randint(4, 6)
         student = _pick_classes(pool, weights, n_classes)
 
         if _has_conflict(student):
@@ -273,7 +273,7 @@ def report(result: SimulationResult) -> None:
     print(f"\nAverage weekly hours IN class by load group")
     print(f"  {'Classes':<10} {'Students':>9} {'Mean hrs':>10} {'Median hrs':>12} {'Min hrs':>9} {'Max hrs':>9}")
     print(f"  {'-'*10} {'-'*9} {'-'*10} {'-'*12} {'-'*9} {'-'*9}")
-    for n_cls in (3, 4, 5):
+    for n_cls in (4, 5, 6):
         data = result.class_mins_by_n[n_cls]
         if not data:
             print(f"  {n_cls:<10} {'—':>9}")
