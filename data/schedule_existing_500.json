@@ -1,0 +1,33 @@
+{
+  "total_courses": 500,
+  "source": "Historical weights F2016-F2020, scaled to 500",
+  "courses_by_block": {
+    "TR long block B": 64,
+    "MWF Standard B": 62,
+    "TR long block C": 60,
+    "MWF Standard C": 52,
+    "MWF Standard E": 44,
+    "MWF Standard F": 37,
+    "MW long block A": 33,
+    "MWF Standard A": 28,
+    "MWF Standard D": 20,
+    "MW long block B": 19,
+    "TR long block A": 17,
+    "MW Advanced Art Studio A-2": 9,
+    "MWF 3-day long block B": 9,
+    "MWF 3-day long block C": 7,
+    "MW Extended Block B": 6,
+    "MW long block D": 5,
+    "MW long block E": 5,
+    "MWF 3-day long block A": 4,
+    "MWF Standard G": 4,
+    "TR Advanced Art Studio A-3": 4,
+    "MW long block C": 3,
+    "TR extended block A": 3,
+    "TR extended block B": 3,
+    "MW Extended Block A": 1,
+    "TR Experiential Lab Block A-2": 1,
+    "TR Experiential Lab Block A-3": 0,
+    "Tuesday Astronomy Lab": 0
+  }
+}

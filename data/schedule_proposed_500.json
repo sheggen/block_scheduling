@@ -1,0 +1,25 @@
+{
+  "total_courses": 500,
+  "source": "Mapped from existing schedule via nearest-block distance",
+  "courses_by_block": {
+    "TR 75min B": 64,
+    "MWF 50min A": 62,
+    "MWF 50min C": 61,
+    "TR 75min D": 60,
+    "MWF 70min D": 44,
+    "MWF 70min A": 37,
+    "MWF 70min E": 37,
+    "MW 140min B": 33,
+    "MW 140min C": 25,
+    "MWF 50min D": 20,
+    "TR 100min A": 17,
+    "MW 170min A": 9,
+    "TR 170min A": 8,
+    "MWF 50min G": 7,
+    "MW 140min A": 6,
+    "MWF 70min F": 4,
+    "MWF 120min A": 3,
+    "TR 170min B": 3,
+    "TR 180min A": 0
+  }
+}
