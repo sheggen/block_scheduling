@@ -1,4 +1,79 @@
 {
   "name": "Proposed Schedule",
-  "time_blocks": []
+  "time_blocks": [
+    {"name": "MWF 50min A",   "days": ["M","W","F"], "start": "09:00", "end": "09:50"},
+    {"name": "MWF 50min B",   "days": ["M","W","F"], "start": "10:00", "end": "10:50"},
+    {"name": "MWF 50min C",   "days": ["M","W","F"], "start": "11:00", "end": "11:50"},
+    {"name": "MWF 50min D",   "days": ["M","W","F"], "start": "12:00", "end": "12:50"},
+    {"name": "MWF 50min E",   "days": ["M","W","F"], "start": "13:00", "end": "13:50"},
+    {"name": "MWF 50min F",   "days": ["M","W","F"], "start": "14:00", "end": "14:50"},
+    {"name": "MWF 50min G",   "days": ["M","W","F"], "start": "15:00", "end": "15:50"},
+    {"name": "MWF 50min H",   "days": ["M","W","F"], "start": "16:00", "end": "16:50"},
+    {"name": "MWF 50min I",   "days": ["M","W","F"], "start": "17:00", "end": "17:50"},
+    {"name": "MWF 50min J",   "days": ["M","W","F"], "start": "18:00", "end": "18:50"},
+    {"name": "MWF 50min K",   "days": ["M","W","F"], "start": "19:00", "end": "19:50"},
+
+    {"name": "MWF 70min A",   "days": ["M","W","F"], "start": "08:30", "end": "09:40"},
+    {"name": "MWF 70min B",   "days": ["M","W","F"], "start": "10:00", "end": "11:10"},
+    {"name": "MWF 70min C",   "days": ["M","W","F"], "start": "11:30", "end": "12:40"},
+    {"name": "MWF 70min D",   "days": ["M","W","F"], "start": "13:00", "end": "14:10"},
+    {"name": "MWF 70min E",   "days": ["M","W","F"], "start": "14:30", "end": "15:40"},
+    {"name": "MWF 70min F",   "days": ["M","W","F"], "start": "16:00", "end": "17:10"},
+    {"name": "MWF 70min G",   "days": ["M","W","F"], "start": "17:30", "end": "18:40"},
+    {"name": "MWF 70min H",   "days": ["M","W","F"], "start": "19:00", "end": "20:10"},
+
+    {"name": "MWF 90min A",   "days": ["M","W","F"], "start": "17:30", "end": "19:00"},
+    {"name": "MWF 120min A",  "days": ["M","W","F"], "start": "19:00", "end": "21:00"},
+
+    {"name": "MW 140min A",   "days": ["M","W"], "start": "09:00", "end": "11:20"},
+    {"name": "MW 140min B",   "days": ["M","W"], "start": "12:00", "end": "14:20"},
+    {"name": "MW 140min C",   "days": ["M","W"], "start": "15:00", "end": "17:20"},
+    {"name": "MW 140min D",   "days": ["M","W"], "start": "18:00", "end": "20:20"},
+
+    {"name": "MF 140min A",   "days": ["M","F"], "start": "09:00", "end": "11:20"},
+    {"name": "MF 140min B",   "days": ["M","F"], "start": "12:00", "end": "14:20"},
+    {"name": "MF 140min C",   "days": ["M","F"], "start": "15:00", "end": "17:20"},
+    {"name": "MF 140min D",   "days": ["M","F"], "start": "18:00", "end": "20:20"},
+
+    {"name": "WF 140min A",   "days": ["W","F"], "start": "09:00", "end": "11:20"},
+    {"name": "WF 140min B",   "days": ["W","F"], "start": "12:00", "end": "14:20"},
+    {"name": "WF 140min C",   "days": ["W","F"], "start": "15:00", "end": "17:20"},
+    {"name": "WF 140min D",   "days": ["W","F"], "start": "18:00", "end": "20:20"},
+
+    {"name": "MW 170min A",   "days": ["M","W"], "start": "09:00", "end": "11:50"},
+    {"name": "MW 170min B",   "days": ["M","W"], "start": "12:00", "end": "14:50"},
+    {"name": "MW 170min C",   "days": ["M","W"], "start": "15:00", "end": "17:50"},
+    {"name": "MW 170min D",   "days": ["M","W"], "start": "18:00", "end": "20:50"},
+
+    {"name": "MF 170min A",   "days": ["M","F"], "start": "09:00", "end": "11:50"},
+    {"name": "MF 170min B",   "days": ["M","F"], "start": "12:00", "end": "14:50"},
+    {"name": "MF 170min C",   "days": ["M","F"], "start": "15:00", "end": "17:50"},
+    {"name": "MF 170min D",   "days": ["M","F"], "start": "18:00", "end": "20:50"},
+
+    {"name": "WF 170min A",   "days": ["W","F"], "start": "09:00", "end": "11:50"},
+    {"name": "WF 170min B",   "days": ["W","F"], "start": "12:00", "end": "14:50"},
+    {"name": "WF 170min C",   "days": ["W","F"], "start": "15:00", "end": "17:50"},
+    {"name": "WF 170min D",   "days": ["W","F"], "start": "18:00", "end": "20:50"},
+
+    {"name": "MWF 170min A",  "days": ["M","W","F"], "start": "09:00", "end": "11:50"},
+    {"name": "MWF 170min B",  "days": ["M","W","F"], "start": "12:00", "end": "14:50"},
+    {"name": "MWF 170min C",  "days": ["M","W","F"], "start": "15:00", "end": "17:50"},
+    {"name": "MWF 170min D",  "days": ["M","W","F"], "start": "18:00", "end": "20:50"},
+
+    {"name": "TR 75min A",    "days": ["T","R"], "start": "08:45", "end": "10:10"},
+    {"name": "TR 75min B",    "days": ["T","R"], "start": "10:30", "end": "11:45"},
+    {"name": "TR 75min C",    "days": ["T","R"], "start": "12:00", "end": "13:15"},
+    {"name": "TR 75min D",    "days": ["T","R"], "start": "13:30", "end": "14:45"},
+
+    {"name": "TR 90min A",    "days": ["T","R"], "start": "17:30", "end": "19:00"},
+
+    {"name": "TR 100min A",   "days": ["T","R"], "start": "08:30", "end": "10:10"},
+    {"name": "TR 100min B",   "days": ["T","R"], "start": "10:30", "end": "12:10"},
+    {"name": "TR 100min C",   "days": ["T","R"], "start": "12:30", "end": "14:10"},
+
+    {"name": "TR 170min A",   "days": ["T","R"], "start": "08:45", "end": "11:35"},
+    {"name": "TR 170min B",   "days": ["T","R"], "start": "12:00", "end": "14:50"},
+
+    {"name": "TR 180min A",   "days": ["T","R"], "start": "17:30", "end": "20:30"}
+  ]
 }
