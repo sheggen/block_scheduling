@@ -3,13 +3,12 @@ Export all generated tables to data/tables.xlsx.
 
 Sheets
 ------
-  1. Gap Analysis          — every block per day with inter-block gaps (both schedules)
-  2. Gap Summary           — daily & weekly free-time totals, existing vs proposed
-  3. Simulation - Existing — per-day free-time stats + weekly summary + class-load stats
-  4. Simulation - Proposed — same for proposed schedule
-  5. Block Mapping         — existing → proposed nearest-block mapping with distances
-  6. Course Distribution   — 500-course allocation for existing and proposed
-  7. Student Analysis      — full existing vs proposed comparison (1,500 students each)
+  1. Gap Summary           — daily & weekly free-time totals, existing vs proposed
+  2. Simulation - Existing — per-day free-time stats + weekly summary + class-load stats
+  3. Simulation - Proposed — same for proposed schedule
+  4. Block Mapping         — existing → proposed nearest-block mapping with distances
+  5. Course Distribution   — 500-course allocation for existing and proposed
+  6. Student Analysis      — full existing vs proposed comparison (1,500 students each)
 """
 
 from __future__ import annotations
@@ -56,29 +55,6 @@ def _pct(data: list, p: float) -> float:
 # ---------------------------------------------------------------------------
 # Table builders
 # ---------------------------------------------------------------------------
-
-def _gap_analysis_df(schedule: Schedule) -> pd.DataFrame:
-    rows = []
-    for day in DAY_ORDER:
-        blocks = sorted(
-            [b for b in schedule.time_blocks if day in b.days],
-            key=lambda b: (b.start, b.end),
-        )
-        for i, blk in enumerate(blocks):
-            gap = (
-                max(0, _mins(blocks[i + 1].start) - _mins(blk.end))
-                if i + 1 < len(blocks)
-                else None
-            )
-            rows.append({
-                "Day":              DAY_NAMES[day],
-                "Block":            blk.name,
-                "Start":            blk.start.strftime("%H:%M"),
-                "End":              blk.end.strftime("%H:%M"),
-                "Gap After (min)":  gap,
-            })
-    return pd.DataFrame(rows)
-
 
 def _gap_summary_df(existing: Schedule, proposed: Schedule) -> pd.DataFrame:
     def day_totals(sched):
@@ -323,16 +299,7 @@ def main() -> None:
     print("Writing Excel…")
     with pd.ExcelWriter(OUT, engine="openpyxl") as writer:
 
-        # 1. Gap Analysis
-        df_ex_gap = _gap_analysis_df(existing)
-        df_ex_gap.insert(0, "Schedule", "Existing")
-        df_pr_gap = _gap_analysis_df(proposed)
-        df_pr_gap.insert(0, "Schedule", "Proposed")
-        pd.concat([df_ex_gap, df_pr_gap], ignore_index=True).to_excel(
-            writer, sheet_name="Gap Analysis", index=False
-        )
-
-        # 2. Gap Summary
+        # 1. Gap Summary
         _gap_summary_df(existing, proposed).to_excel(
             writer, sheet_name="Gap Summary", index=False
         )
