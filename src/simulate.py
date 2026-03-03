@@ -28,11 +28,6 @@ from schedule import Schedule, TimeBlock, DAY_ORDER, DAY_NAMES
 STUDENT_DAY_START = time(8, 0)
 STUDENT_DAY_END   = time(17, 0)
 
-# Peak popularity window
-PEAK_START = time(10, 0)
-PEAK_END   = time(14, 0)
-PEAK_WEIGHT_MULTIPLIER = 3.0   # fully-inside-peak blocks are 3× more likely
-
 # Historical course counts per block, aggregated across Fall 2016–Fall 2020 (9 terms).
 # Source: CAS scheduling database (bannerschedule letter → course count).
 # Blocks not present in the database receive HISTORICAL_FALLBACK_WEIGHT.
@@ -100,17 +95,6 @@ def _evening_eligible(block: TimeBlock) -> bool:
         return False
     return block.start >= STUDENT_DAY_START and block.end > STUDENT_DAY_END
 
-
-def _block_weight(block: TimeBlock) -> float:
-    """Weight based on overlap fraction with the 10am–2pm peak window."""
-    overlap = max(
-        0,
-        min(_mins(block.end), _mins(PEAK_END)) - max(_mins(block.start), _mins(PEAK_START)),
-    )
-    if overlap == 0 or block.duration_minutes == 0:
-        return 1.0
-    ratio = overlap / block.duration_minutes
-    return 1.0 + (PEAK_WEIGHT_MULTIPLIER - 1.0) * ratio
 
 
 def _has_conflict(blocks: list[TimeBlock]) -> bool:
