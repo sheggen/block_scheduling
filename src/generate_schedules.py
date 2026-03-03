@@ -6,7 +6,12 @@ Proposed schedule: each existing block is mapped to the nearest proposed block
 using a composite distance:
   - Day distance  : +50 per day that is present in one block but not the other
   - Time distance : absolute difference in block midpoints (minutes)
-  - Duration distance: |duration_A - duration_B| * 0.5
+  - Duration distance: |normalized_duration_A - normalized_duration_B| * 0.5
+
+Duration equivalences (treated as zero distance):
+  - 50min (proposed) == 70min (existing)
+  - 110min (existing) == 140min (proposed)
+  - 110min (existing) == 170min (proposed)
 """
 
 from __future__ import annotations
@@ -44,13 +49,22 @@ def _duration(b: TimeBlock) -> int:
     return _mins(b.end) - _mins(b.start)
 
 
+def _dur_class(minutes: int) -> int:
+    """Normalize duration into an equivalence class (in canonical minutes)."""
+    if minutes in (50, 70):
+        return 60       # 50min and 70min are equivalent
+    if minutes in (110, 140, 170):
+        return 140      # 110min, 140min, and 170min are equivalent
+    return minutes
+
+
 def _block_distance(a: TimeBlock, b: TimeBlock) -> float:
     """Lower is better."""
     day_set_a = set(a.days)
     day_set_b = set(b.days)
-    day_dist = len(day_set_a.symmetric_difference(day_set_b)) * 50
+    day_dist  = len(day_set_a.symmetric_difference(day_set_b)) * 50
     time_dist = abs(_midpoint(a) - _midpoint(b))
-    dur_dist  = abs(_duration(a) - _duration(b)) * 0.5
+    dur_dist  = abs(_dur_class(_duration(a)) - _dur_class(_duration(b))) * 0.5
     return day_dist + time_dist + dur_dist
 
 
