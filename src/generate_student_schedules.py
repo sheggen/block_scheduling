@@ -172,7 +172,7 @@ def generate(
     n_conflicts = 0
 
     while len(valid) < target:
-        n_classes = rng.randint(4, 6)
+        n_classes = rng.randint(3, 5)
 
         # Draw unique indices via weighted sampling with oversampling
         seen: set[int] = set()
@@ -237,7 +237,7 @@ def _print_comparison(label_a: str, ra: dict, label_b: str, rb: dict) -> None:
     print()
     print(f"{'Class load':<30} {label_a:>18} {label_b:>18}")
     print(f"{'-'*30} {'-'*18} {'-'*18}")
-    for n in (4, 5, 6):
+    for n in (3, 4, 5):
         pct_a = 100 * ra['class_load'][str(n)] / TARGET_VALID
         pct_b = 100 * rb['class_load'][str(n)] / TARGET_VALID
         row(f"  {n} classes",

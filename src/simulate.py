@@ -174,10 +174,10 @@ def run(schedule: Schedule, n: int = 10_000, seed: int | None = None) -> Simulat
     n_conflicts = 0
     weekly_gaps: list[int] = []
     day_gaps: dict[str, list[int]] = {day: [] for day in DAY_ORDER}
-    class_mins_by_n: dict[int, list[int]] = {4: [], 5: [], 6: []}
+    class_mins_by_n: dict[int, list[int]] = {3: [], 4: [], 5: []}
 
     for _ in range(n):
-        n_classes = random.randint(4, 6)
+        n_classes = random.randint(3, 5)
         student = _pick_classes(pool, weights, n_classes)
 
         if _has_conflict(student):
@@ -273,7 +273,7 @@ def report(result: SimulationResult) -> None:
     print(f"\nAverage weekly hours IN class by load group")
     print(f"  {'Classes':<10} {'Students':>9} {'Mean hrs':>10} {'Median hrs':>12} {'Min hrs':>9} {'Max hrs':>9}")
     print(f"  {'-'*10} {'-'*9} {'-'*10} {'-'*12} {'-'*9} {'-'*9}")
-    for n_cls in (4, 5, 6):
+    for n_cls in (3, 4, 5):
         data = result.class_mins_by_n[n_cls]
         if not data:
             print(f"  {n_cls:<10} {'—':>9}")
