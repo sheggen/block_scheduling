@@ -3,8 +3,10 @@ Monte Carlo simulation of student schedules.
 
 Assumptions:
 - Students prefer classes between 8am and 5pm, Monday–Friday (daytime window).
-- Evening blocks (weekday, start >= 7am, end after 6pm) are included but are
-  only 10% as likely to be chosen as a base daytime block.
+- Evening blocks (weekday, end after 5pm) are included and weighted by their
+  historical course counts, the same as all other blocks.  Historically,
+  evening blocks account for ~6.4% of all scheduled courses (222 of 3,472
+  across Fall 2016–Fall 2020), so they are naturally selected at that rate.
 - Each student takes 3–5 classes, chosen randomly.
 - Block selection is weighted by historical course counts aggregated across
   Fall 2016–Fall 2020 (9 terms) from the CAS scheduling database.
@@ -30,9 +32,6 @@ STUDENT_DAY_END   = time(17, 0)
 PEAK_START = time(10, 0)
 PEAK_END   = time(14, 0)
 PEAK_WEIGHT_MULTIPLIER = 3.0   # fully-inside-peak blocks are 3× more likely
-
-# Evening block selection probability (relative to base daytime weight of 1.0)
-EVENING_WEIGHT = 0.1
 
 # Historical course counts per block, aggregated across Fall 2016–Fall 2020 (9 terms).
 # Source: CAS scheduling database (bannerschedule letter → course count).
@@ -194,7 +193,6 @@ def run(schedule: Schedule, n: int = 10_000, seed: int | None = None) -> Simulat
     pool      = day_pool + spec_pool + eve_pool
     weights   = [
         HISTORICAL_WEIGHTS.get(b.name, HISTORICAL_FALLBACK_WEIGHT)
-        * (EVENING_WEIGHT if b in spec_pool or b in eve_pool else 1.0)
         for b in pool
     ]
 
@@ -262,7 +260,7 @@ def report(result: SimulationResult) -> None:
     print(f"Simulation: {result.schedule_name}   n={result.n_attempts:,} attempts")
     print("=" * 70)
 
-    print(f"\nStudent work day: 8am–5pm, Mon–Fri; blocks weighted by historical usage (F2016–F2020); specialty/evening scaled at {EVENING_WEIGHT:.0%}")
+    print(f"\nStudent work day: 8am–5pm, Mon–Fri; blocks weighted by historical usage (F2016–F2020)")
     print(f"Conflict check  : {result.n_conflicts:,} of {result.n_attempts:,} schedules had overlapping blocks "
           f"({result.conflict_pct:.1f}%) — excluded from analysis")
     print(f"Valid schedules : {result.n_valid:,}")
