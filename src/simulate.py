@@ -103,13 +103,17 @@ def _pick_classes(pool: list[TimeBlock], weights: list[float], n: int) -> list[T
 
 
 def _weekly_gap_minutes(student_blocks: list[TimeBlock]) -> dict[str, int]:
-    """Total free-time minutes between consecutive classes per day."""
+    """Total free-time minutes per day: morning (7am→first class), gaps between
+    consecutive classes, and evening (last class→6pm). Days with no classes contribute 0."""
     result: dict[str, int] = {}
     for day in DAY_ORDER:
         day_blocks = sorted([b for b in student_blocks if day in b.days], key=lambda b: b.start)
         total = 0
-        for i in range(1, len(day_blocks)):
-            total += max(0, _mins(day_blocks[i].start) - _mins(day_blocks[i - 1].end))
+        if day_blocks:
+            total += max(0, _mins(day_blocks[0].start) - _mins(STUDENT_DAY_START))
+            for i in range(1, len(day_blocks)):
+                total += max(0, _mins(day_blocks[i].start) - _mins(day_blocks[i - 1].end))
+            total += max(0, _mins(STUDENT_DAY_END) - _mins(day_blocks[-1].end))
         result[day] = total
     return result
 
