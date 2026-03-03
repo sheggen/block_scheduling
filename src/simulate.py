@@ -208,7 +208,7 @@ def report(result: SimulationResult) -> None:
     print(f"Simulation: {result.schedule_name}   n={result.n_attempts:,} attempts")
     print("=" * 70)
 
-    print(f"\nEligible blocks : Mon–Fri; daytime (7am–6pm) full weight, evening (after 6pm) at {EVENING_WEIGHT:.0%} weight")
+    print(f"\nStudent work day: 7am–6pm, Mon–Fri; evening blocks (end after 6pm) also selectable at {EVENING_WEIGHT:.0%} weight")
     print(f"Conflict check  : {result.n_conflicts:,} of {result.n_attempts:,} schedules had overlapping blocks "
           f"({result.conflict_pct:.1f}%) — excluded from analysis")
     print(f"Valid schedules : {result.n_valid:,}")
