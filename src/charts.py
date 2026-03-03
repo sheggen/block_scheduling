@@ -157,7 +157,7 @@ def main():
 
     # ── 5. Contact hours by class load ───────────────────────────────────────
     ax5 = fig.add_subplot(gs[3, 0])
-    n_cls_vals = [3, 4, 5]
+    n_cls_vals = [4, 5, 6]
     contact_data = [
         [m / 60 for m in res.class_mins_by_n[n]] for n in n_cls_vals
     ]

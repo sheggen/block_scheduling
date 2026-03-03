@@ -274,8 +274,8 @@ def main():
     ax5 = fig.add_subplot(gs[3, 0])
     ex_loads = [s["n_classes"] for s in ex_raw["schedules"]]
     pr_loads = [s["n_classes"] for s in pr_raw["schedules"]]
-    ex_by_load = {n: [] for n in (3, 4, 5)}
-    pr_by_load = {n: [] for n in (3, 4, 5)}
+    ex_by_load = {n: [] for n in (4, 5, 6)}
+    pr_by_load = {n: [] for n in (4, 5, 6)}
 
     for s, m in zip(ex_raw["schedules"],
                     [dict(n=s["n_classes"], c=sum(
@@ -306,16 +306,16 @@ def main():
         )
         pr_by_load[n].append(contact / 60)
 
-    load_labels = ["3 classes", "4 classes", "5 classes"]
+    load_labels = ["4 classes", "5 classes", "6 classes"]
     _side_boxplot(ax5,
-                  [ex_by_load[n] for n in (3, 4, 5)],
-                  [pr_by_load[n] for n in (3, 4, 5)],
+                  [ex_by_load[n] for n in (4, 5, 6)],
+                  [pr_by_load[n] for n in (4, 5, 6)],
                   load_labels, "Existing", "Proposed",
                   ylabel="Weekly contact hours",
                   title="Weekly contact hours by class load")
     positions_a5 = [i * 3 + 0.6 for i in range(3)]
     positions_b5 = [i * 3 + 1.8 for i in range(3)]
-    for i, n in enumerate((3, 4, 5)):
+    for i, n in enumerate((4, 5, 6)):
         med_a = statistics.median(ex_by_load[n]) if ex_by_load[n] else 0
         med_b = statistics.median(pr_by_load[n]) if pr_by_load[n] else 0
         ax5.text(positions_a5[i], med_a + 0.05, f"{med_a:.1f}h", ha="center", va="bottom",
