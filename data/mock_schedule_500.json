@@ -1,0 +1,2033 @@
+{
+  "total_courses": 500,
+  "source": "Historical weights F2016-F2020, scaled to 500",
+  "courses_by_block": {
+    "TR long block B": 64,
+    "MWF Standard B": 62,
+    "TR long block C": 60,
+    "MWF Standard C": 52,
+    "MWF Standard E": 44,
+    "MWF Standard F": 37,
+    "MW long block A": 33,
+    "MWF Standard A": 28,
+    "MWF Standard D": 20,
+    "MW long block B": 19,
+    "TR long block A": 17,
+    "MWF 3-day long block B": 9,
+    "MW Advanced Art Studio A-2": 9,
+    "MWF 3-day long block C": 7,
+    "MW Extended Block B": 6,
+    "MW long block D": 5,
+    "MW long block E": 5,
+    "MWF Standard G": 4,
+    "MWF 3-day long block A": 4,
+    "TR Advanced Art Studio A-3": 4,
+    "MW long block C": 3,
+    "TR extended block A": 3,
+    "TR extended block B": 3,
+    "MW Extended Block A": 1,
+    "TR Experiential Lab Block A-2": 1
+  },
+  "courses": [
+    {
+      "block": "TR long block B",
+      "section": 1
+    },
+    {
+      "block": "TR long block B",
+      "section": 2
+    },
+    {
+      "block": "TR long block B",
+      "section": 3
+    },
+    {
+      "block": "TR long block B",
+      "section": 4
+    },
+    {
+      "block": "TR long block B",
+      "section": 5
+    },
+    {
+      "block": "TR long block B",
+      "section": 6
+    },
+    {
+      "block": "TR long block B",
+      "section": 7
+    },
+    {
+      "block": "TR long block B",
+      "section": 8
+    },
+    {
+      "block": "TR long block B",
+      "section": 9
+    },
+    {
+      "block": "TR long block B",
+      "section": 10
+    },
+    {
+      "block": "TR long block B",
+      "section": 11
+    },
+    {
+      "block": "TR long block B",
+      "section": 12
+    },
+    {
+      "block": "TR long block B",
+      "section": 13
+    },
+    {
+      "block": "TR long block B",
+      "section": 14
+    },
+    {
+      "block": "TR long block B",
+      "section": 15
+    },
+    {
+      "block": "TR long block B",
+      "section": 16
+    },
+    {
+      "block": "TR long block B",
+      "section": 17
+    },
+    {
+      "block": "TR long block B",
+      "section": 18
+    },
+    {
+      "block": "TR long block B",
+      "section": 19
+    },
+    {
+      "block": "TR long block B",
+      "section": 20
+    },
+    {
+      "block": "TR long block B",
+      "section": 21
+    },
+    {
+      "block": "TR long block B",
+      "section": 22
+    },
+    {
+      "block": "TR long block B",
+      "section": 23
+    },
+    {
+      "block": "TR long block B",
+      "section": 24
+    },
+    {
+      "block": "TR long block B",
+      "section": 25
+    },
+    {
+      "block": "TR long block B",
+      "section": 26
+    },
+    {
+      "block": "TR long block B",
+      "section": 27
+    },
+    {
+      "block": "TR long block B",
+      "section": 28
+    },
+    {
+      "block": "TR long block B",
+      "section": 29
+    },
+    {
+      "block": "TR long block B",
+      "section": 30
+    },
+    {
+      "block": "TR long block B",
+      "section": 31
+    },
+    {
+      "block": "TR long block B",
+      "section": 32
+    },
+    {
+      "block": "TR long block B",
+      "section": 33
+    },
+    {
+      "block": "TR long block B",
+      "section": 34
+    },
+    {
+      "block": "TR long block B",
+      "section": 35
+    },
+    {
+      "block": "TR long block B",
+      "section": 36
+    },
+    {
+      "block": "TR long block B",
+      "section": 37
+    },
+    {
+      "block": "TR long block B",
+      "section": 38
+    },
+    {
+      "block": "TR long block B",
+      "section": 39
+    },
+    {
+      "block": "TR long block B",
+      "section": 40
+    },
+    {
+      "block": "TR long block B",
+      "section": 41
+    },
+    {
+      "block": "TR long block B",
+      "section": 42
+    },
+    {
+      "block": "TR long block B",
+      "section": 43
+    },
+    {
+      "block": "TR long block B",
+      "section": 44
+    },
+    {
+      "block": "TR long block B",
+      "section": 45
+    },
+    {
+      "block": "TR long block B",
+      "section": 46
+    },
+    {
+      "block": "TR long block B",
+      "section": 47
+    },
+    {
+      "block": "TR long block B",
+      "section": 48
+    },
+    {
+      "block": "TR long block B",
+      "section": 49
+    },
+    {
+      "block": "TR long block B",
+      "section": 50
+    },
+    {
+      "block": "TR long block B",
+      "section": 51
+    },
+    {
+      "block": "TR long block B",
+      "section": 52
+    },
+    {
+      "block": "TR long block B",
+      "section": 53
+    },
+    {
+      "block": "TR long block B",
+      "section": 54
+    },
+    {
+      "block": "TR long block B",
+      "section": 55
+    },
+    {
+      "block": "TR long block B",
+      "section": 56
+    },
+    {
+      "block": "TR long block B",
+      "section": 57
+    },
+    {
+      "block": "TR long block B",
+      "section": 58
+    },
+    {
+      "block": "TR long block B",
+      "section": 59
+    },
+    {
+      "block": "TR long block B",
+      "section": 60
+    },
+    {
+      "block": "TR long block B",
+      "section": 61
+    },
+    {
+      "block": "TR long block B",
+      "section": 62
+    },
+    {
+      "block": "TR long block B",
+      "section": 63
+    },
+    {
+      "block": "TR long block B",
+      "section": 64
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 1
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 2
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 3
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 4
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 5
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 6
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 7
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 8
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 9
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 10
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 11
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 12
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 13
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 14
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 15
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 16
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 17
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 18
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 19
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 20
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 21
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 22
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 23
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 24
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 25
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 26
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 27
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 28
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 29
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 30
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 31
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 32
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 33
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 34
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 35
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 36
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 37
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 38
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 39
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 40
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 41
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 42
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 43
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 44
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 45
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 46
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 47
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 48
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 49
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 50
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 51
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 52
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 53
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 54
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 55
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 56
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 57
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 58
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 59
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 60
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 61
+    },
+    {
+      "block": "MWF Standard B",
+      "section": 62
+    },
+    {
+      "block": "TR long block C",
+      "section": 1
+    },
+    {
+      "block": "TR long block C",
+      "section": 2
+    },
+    {
+      "block": "TR long block C",
+      "section": 3
+    },
+    {
+      "block": "TR long block C",
+      "section": 4
+    },
+    {
+      "block": "TR long block C",
+      "section": 5
+    },
+    {
+      "block": "TR long block C",
+      "section": 6
+    },
+    {
+      "block": "TR long block C",
+      "section": 7
+    },
+    {
+      "block": "TR long block C",
+      "section": 8
+    },
+    {
+      "block": "TR long block C",
+      "section": 9
+    },
+    {
+      "block": "TR long block C",
+      "section": 10
+    },
+    {
+      "block": "TR long block C",
+      "section": 11
+    },
+    {
+      "block": "TR long block C",
+      "section": 12
+    },
+    {
+      "block": "TR long block C",
+      "section": 13
+    },
+    {
+      "block": "TR long block C",
+      "section": 14
+    },
+    {
+      "block": "TR long block C",
+      "section": 15
+    },
+    {
+      "block": "TR long block C",
+      "section": 16
+    },
+    {
+      "block": "TR long block C",
+      "section": 17
+    },
+    {
+      "block": "TR long block C",
+      "section": 18
+    },
+    {
+      "block": "TR long block C",
+      "section": 19
+    },
+    {
+      "block": "TR long block C",
+      "section": 20
+    },
+    {
+      "block": "TR long block C",
+      "section": 21
+    },
+    {
+      "block": "TR long block C",
+      "section": 22
+    },
+    {
+      "block": "TR long block C",
+      "section": 23
+    },
+    {
+      "block": "TR long block C",
+      "section": 24
+    },
+    {
+      "block": "TR long block C",
+      "section": 25
+    },
+    {
+      "block": "TR long block C",
+      "section": 26
+    },
+    {
+      "block": "TR long block C",
+      "section": 27
+    },
+    {
+      "block": "TR long block C",
+      "section": 28
+    },
+    {
+      "block": "TR long block C",
+      "section": 29
+    },
+    {
+      "block": "TR long block C",
+      "section": 30
+    },
+    {
+      "block": "TR long block C",
+      "section": 31
+    },
+    {
+      "block": "TR long block C",
+      "section": 32
+    },
+    {
+      "block": "TR long block C",
+      "section": 33
+    },
+    {
+      "block": "TR long block C",
+      "section": 34
+    },
+    {
+      "block": "TR long block C",
+      "section": 35
+    },
+    {
+      "block": "TR long block C",
+      "section": 36
+    },
+    {
+      "block": "TR long block C",
+      "section": 37
+    },
+    {
+      "block": "TR long block C",
+      "section": 38
+    },
+    {
+      "block": "TR long block C",
+      "section": 39
+    },
+    {
+      "block": "TR long block C",
+      "section": 40
+    },
+    {
+      "block": "TR long block C",
+      "section": 41
+    },
+    {
+      "block": "TR long block C",
+      "section": 42
+    },
+    {
+      "block": "TR long block C",
+      "section": 43
+    },
+    {
+      "block": "TR long block C",
+      "section": 44
+    },
+    {
+      "block": "TR long block C",
+      "section": 45
+    },
+    {
+      "block": "TR long block C",
+      "section": 46
+    },
+    {
+      "block": "TR long block C",
+      "section": 47
+    },
+    {
+      "block": "TR long block C",
+      "section": 48
+    },
+    {
+      "block": "TR long block C",
+      "section": 49
+    },
+    {
+      "block": "TR long block C",
+      "section": 50
+    },
+    {
+      "block": "TR long block C",
+      "section": 51
+    },
+    {
+      "block": "TR long block C",
+      "section": 52
+    },
+    {
+      "block": "TR long block C",
+      "section": 53
+    },
+    {
+      "block": "TR long block C",
+      "section": 54
+    },
+    {
+      "block": "TR long block C",
+      "section": 55
+    },
+    {
+      "block": "TR long block C",
+      "section": 56
+    },
+    {
+      "block": "TR long block C",
+      "section": 57
+    },
+    {
+      "block": "TR long block C",
+      "section": 58
+    },
+    {
+      "block": "TR long block C",
+      "section": 59
+    },
+    {
+      "block": "TR long block C",
+      "section": 60
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 1
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 2
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 3
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 4
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 5
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 6
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 7
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 8
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 9
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 10
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 11
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 12
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 13
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 14
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 15
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 16
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 17
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 18
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 19
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 20
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 21
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 22
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 23
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 24
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 25
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 26
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 27
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 28
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 29
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 30
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 31
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 32
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 33
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 34
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 35
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 36
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 37
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 38
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 39
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 40
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 41
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 42
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 43
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 44
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 45
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 46
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 47
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 48
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 49
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 50
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 51
+    },
+    {
+      "block": "MWF Standard C",
+      "section": 52
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 1
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 2
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 3
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 4
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 5
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 6
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 7
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 8
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 9
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 10
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 11
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 12
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 13
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 14
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 15
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 16
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 17
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 18
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 19
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 20
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 21
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 22
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 23
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 24
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 25
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 26
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 27
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 28
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 29
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 30
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 31
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 32
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 33
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 34
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 35
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 36
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 37
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 38
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 39
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 40
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 41
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 42
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 43
+    },
+    {
+      "block": "MWF Standard E",
+      "section": 44
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 1
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 2
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 3
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 4
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 5
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 6
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 7
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 8
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 9
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 10
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 11
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 12
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 13
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 14
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 15
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 16
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 17
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 18
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 19
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 20
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 21
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 22
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 23
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 24
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 25
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 26
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 27
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 28
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 29
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 30
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 31
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 32
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 33
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 34
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 35
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 36
+    },
+    {
+      "block": "MWF Standard F",
+      "section": 37
+    },
+    {
+      "block": "MW long block A",
+      "section": 1
+    },
+    {
+      "block": "MW long block A",
+      "section": 2
+    },
+    {
+      "block": "MW long block A",
+      "section": 3
+    },
+    {
+      "block": "MW long block A",
+      "section": 4
+    },
+    {
+      "block": "MW long block A",
+      "section": 5
+    },
+    {
+      "block": "MW long block A",
+      "section": 6
+    },
+    {
+      "block": "MW long block A",
+      "section": 7
+    },
+    {
+      "block": "MW long block A",
+      "section": 8
+    },
+    {
+      "block": "MW long block A",
+      "section": 9
+    },
+    {
+      "block": "MW long block A",
+      "section": 10
+    },
+    {
+      "block": "MW long block A",
+      "section": 11
+    },
+    {
+      "block": "MW long block A",
+      "section": 12
+    },
+    {
+      "block": "MW long block A",
+      "section": 13
+    },
+    {
+      "block": "MW long block A",
+      "section": 14
+    },
+    {
+      "block": "MW long block A",
+      "section": 15
+    },
+    {
+      "block": "MW long block A",
+      "section": 16
+    },
+    {
+      "block": "MW long block A",
+      "section": 17
+    },
+    {
+      "block": "MW long block A",
+      "section": 18
+    },
+    {
+      "block": "MW long block A",
+      "section": 19
+    },
+    {
+      "block": "MW long block A",
+      "section": 20
+    },
+    {
+      "block": "MW long block A",
+      "section": 21
+    },
+    {
+      "block": "MW long block A",
+      "section": 22
+    },
+    {
+      "block": "MW long block A",
+      "section": 23
+    },
+    {
+      "block": "MW long block A",
+      "section": 24
+    },
+    {
+      "block": "MW long block A",
+      "section": 25
+    },
+    {
+      "block": "MW long block A",
+      "section": 26
+    },
+    {
+      "block": "MW long block A",
+      "section": 27
+    },
+    {
+      "block": "MW long block A",
+      "section": 28
+    },
+    {
+      "block": "MW long block A",
+      "section": 29
+    },
+    {
+      "block": "MW long block A",
+      "section": 30
+    },
+    {
+      "block": "MW long block A",
+      "section": 31
+    },
+    {
+      "block": "MW long block A",
+      "section": 32
+    },
+    {
+      "block": "MW long block A",
+      "section": 33
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 1
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 2
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 3
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 4
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 5
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 6
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 7
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 8
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 9
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 10
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 11
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 12
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 13
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 14
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 15
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 16
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 17
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 18
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 19
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 20
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 21
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 22
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 23
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 24
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 25
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 26
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 27
+    },
+    {
+      "block": "MWF Standard A",
+      "section": 28
+    },
+    {
+      "block": "MWF Standard D",
+      "section": 1
+    },
+    {
+      "block": "MWF Standard D",
+      "section": 2
+    },
+    {
+      "block": "MWF Standard D",
+      "section": 3
+    },
+    {
+      "block": "MWF Standard D",
+      "section": 4
+    },
+    {
+      "block": "MWF Standard D",
+      "section": 5
+    },
+    {
+      "block": "MWF Standard D",
+      "section": 6
+    },
+    {
+      "block": "MWF Standard D",
+      "section": 7
+    },
+    {
+      "block": "MWF Standard D",
+      "section": 8
+    },
+    {
+      "block": "MWF Standard D",
+      "section": 9
+    },
+    {
+      "block": "MWF Standard D",
+      "section": 10
+    },
+    {
+      "block": "MWF Standard D",
+      "section": 11
+    },
+    {
+      "block": "MWF Standard D",
+      "section": 12
+    },
+    {
+      "block": "MWF Standard D",
+      "section": 13
+    },
+    {
+      "block": "MWF Standard D",
+      "section": 14
+    },
+    {
+      "block": "MWF Standard D",
+      "section": 15
+    },
+    {
+      "block": "MWF Standard D",
+      "section": 16
+    },
+    {
+      "block": "MWF Standard D",
+      "section": 17
+    },
+    {
+      "block": "MWF Standard D",
+      "section": 18
+    },
+    {
+      "block": "MWF Standard D",
+      "section": 19
+    },
+    {
+      "block": "MWF Standard D",
+      "section": 20
+    },
+    {
+      "block": "MW long block B",
+      "section": 1
+    },
+    {
+      "block": "MW long block B",
+      "section": 2
+    },
+    {
+      "block": "MW long block B",
+      "section": 3
+    },
+    {
+      "block": "MW long block B",
+      "section": 4
+    },
+    {
+      "block": "MW long block B",
+      "section": 5
+    },
+    {
+      "block": "MW long block B",
+      "section": 6
+    },
+    {
+      "block": "MW long block B",
+      "section": 7
+    },
+    {
+      "block": "MW long block B",
+      "section": 8
+    },
+    {
+      "block": "MW long block B",
+      "section": 9
+    },
+    {
+      "block": "MW long block B",
+      "section": 10
+    },
+    {
+      "block": "MW long block B",
+      "section": 11
+    },
+    {
+      "block": "MW long block B",
+      "section": 12
+    },
+    {
+      "block": "MW long block B",
+      "section": 13
+    },
+    {
+      "block": "MW long block B",
+      "section": 14
+    },
+    {
+      "block": "MW long block B",
+      "section": 15
+    },
+    {
+      "block": "MW long block B",
+      "section": 16
+    },
+    {
+      "block": "MW long block B",
+      "section": 17
+    },
+    {
+      "block": "MW long block B",
+      "section": 18
+    },
+    {
+      "block": "MW long block B",
+      "section": 19
+    },
+    {
+      "block": "TR long block A",
+      "section": 1
+    },
+    {
+      "block": "TR long block A",
+      "section": 2
+    },
+    {
+      "block": "TR long block A",
+      "section": 3
+    },
+    {
+      "block": "TR long block A",
+      "section": 4
+    },
+    {
+      "block": "TR long block A",
+      "section": 5
+    },
+    {
+      "block": "TR long block A",
+      "section": 6
+    },
+    {
+      "block": "TR long block A",
+      "section": 7
+    },
+    {
+      "block": "TR long block A",
+      "section": 8
+    },
+    {
+      "block": "TR long block A",
+      "section": 9
+    },
+    {
+      "block": "TR long block A",
+      "section": 10
+    },
+    {
+      "block": "TR long block A",
+      "section": 11
+    },
+    {
+      "block": "TR long block A",
+      "section": 12
+    },
+    {
+      "block": "TR long block A",
+      "section": 13
+    },
+    {
+      "block": "TR long block A",
+      "section": 14
+    },
+    {
+      "block": "TR long block A",
+      "section": 15
+    },
+    {
+      "block": "TR long block A",
+      "section": 16
+    },
+    {
+      "block": "TR long block A",
+      "section": 17
+    },
+    {
+      "block": "MWF 3-day long block B",
+      "section": 1
+    },
+    {
+      "block": "MWF 3-day long block B",
+      "section": 2
+    },
+    {
+      "block": "MWF 3-day long block B",
+      "section": 3
+    },
+    {
+      "block": "MWF 3-day long block B",
+      "section": 4
+    },
+    {
+      "block": "MWF 3-day long block B",
+      "section": 5
+    },
+    {
+      "block": "MWF 3-day long block B",
+      "section": 6
+    },
+    {
+      "block": "MWF 3-day long block B",
+      "section": 7
+    },
+    {
+      "block": "MWF 3-day long block B",
+      "section": 8
+    },
+    {
+      "block": "MWF 3-day long block B",
+      "section": 9
+    },
+    {
+      "block": "MW Advanced Art Studio A-2",
+      "section": 1
+    },
+    {
+      "block": "MW Advanced Art Studio A-2",
+      "section": 2
+    },
+    {
+      "block": "MW Advanced Art Studio A-2",
+      "section": 3
+    },
+    {
+      "block": "MW Advanced Art Studio A-2",
+      "section": 4
+    },
+    {
+      "block": "MW Advanced Art Studio A-2",
+      "section": 5
+    },
+    {
+      "block": "MW Advanced Art Studio A-2",
+      "section": 6
+    },
+    {
+      "block": "MW Advanced Art Studio A-2",
+      "section": 7
+    },
+    {
+      "block": "MW Advanced Art Studio A-2",
+      "section": 8
+    },
+    {
+      "block": "MW Advanced Art Studio A-2",
+      "section": 9
+    },
+    {
+      "block": "MWF 3-day long block C",
+      "section": 1
+    },
+    {
+      "block": "MWF 3-day long block C",
+      "section": 2
+    },
+    {
+      "block": "MWF 3-day long block C",
+      "section": 3
+    },
+    {
+      "block": "MWF 3-day long block C",
+      "section": 4
+    },
+    {
+      "block": "MWF 3-day long block C",
+      "section": 5
+    },
+    {
+      "block": "MWF 3-day long block C",
+      "section": 6
+    },
+    {
+      "block": "MWF 3-day long block C",
+      "section": 7
+    },
+    {
+      "block": "MW Extended Block B",
+      "section": 1
+    },
+    {
+      "block": "MW Extended Block B",
+      "section": 2
+    },
+    {
+      "block": "MW Extended Block B",
+      "section": 3
+    },
+    {
+      "block": "MW Extended Block B",
+      "section": 4
+    },
+    {
+      "block": "MW Extended Block B",
+      "section": 5
+    },
+    {
+      "block": "MW Extended Block B",
+      "section": 6
+    },
+    {
+      "block": "MW long block D",
+      "section": 1
+    },
+    {
+      "block": "MW long block D",
+      "section": 2
+    },
+    {
+      "block": "MW long block D",
+      "section": 3
+    },
+    {
+      "block": "MW long block D",
+      "section": 4
+    },
+    {
+      "block": "MW long block D",
+      "section": 5
+    },
+    {
+      "block": "MW long block E",
+      "section": 1
+    },
+    {
+      "block": "MW long block E",
+      "section": 2
+    },
+    {
+      "block": "MW long block E",
+      "section": 3
+    },
+    {
+      "block": "MW long block E",
+      "section": 4
+    },
+    {
+      "block": "MW long block E",
+      "section": 5
+    },
+    {
+      "block": "MWF Standard G",
+      "section": 1
+    },
+    {
+      "block": "MWF Standard G",
+      "section": 2
+    },
+    {
+      "block": "MWF Standard G",
+      "section": 3
+    },
+    {
+      "block": "MWF Standard G",
+      "section": 4
+    },
+    {
+      "block": "MWF 3-day long block A",
+      "section": 1
+    },
+    {
+      "block": "MWF 3-day long block A",
+      "section": 2
+    },
+    {
+      "block": "MWF 3-day long block A",
+      "section": 3
+    },
+    {
+      "block": "MWF 3-day long block A",
+      "section": 4
+    },
+    {
+      "block": "TR Advanced Art Studio A-3",
+      "section": 1
+    },
+    {
+      "block": "TR Advanced Art Studio A-3",
+      "section": 2
+    },
+    {
+      "block": "TR Advanced Art Studio A-3",
+      "section": 3
+    },
+    {
+      "block": "TR Advanced Art Studio A-3",
+      "section": 4
+    },
+    {
+      "block": "MW long block C",
+      "section": 1
+    },
+    {
+      "block": "MW long block C",
+      "section": 2
+    },
+    {
+      "block": "MW long block C",
+      "section": 3
+    },
+    {
+      "block": "TR extended block A",
+      "section": 1
+    },
+    {
+      "block": "TR extended block A",
+      "section": 2
+    },
+    {
+      "block": "TR extended block A",
+      "section": 3
+    },
+    {
+      "block": "TR extended block B",
+      "section": 1
+    },
+    {
+      "block": "TR extended block B",
+      "section": 2
+    },
+    {
+      "block": "TR extended block B",
+      "section": 3
+    },
+    {
+      "block": "MW Extended Block A",
+      "section": 1
+    },
+    {
+      "block": "TR Experiential Lab Block A-2",
+      "section": 1
+    }
+  ]
+}
