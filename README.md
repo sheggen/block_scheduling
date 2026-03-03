@@ -81,7 +81,7 @@ Used by `main.py` and `charts.py`.
 | Student workday | Mon–Fri, 8:00 am – 5:00 pm |
 | Class load | 3–5 courses (uniform random integer) |
 | Daytime block eligibility | start ≥ 8:00 am and end ≤ 5:00 pm |
-| Evening block eligibility | start ≥ 8:00 am and end > 5:00 pm |
+| Evening block eligibility | ends after 5:00 pm (block extends into the evening, e.g. 4:00 pm – 7:00 pm) |
 | Selection weight | Historical course count, Fall 2016 – Fall 2020 (9 terms) |
 | Fallback weight (unrecognized blocks) | 1.0 |
 | Conflict rule | Any two blocks sharing a day with overlapping times |
