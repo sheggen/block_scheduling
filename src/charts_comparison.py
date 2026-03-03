@@ -9,6 +9,7 @@ Charts
   4. Free time per day    — side-by-side box plots by day
   5. Contact hours        — side-by-side box plots by class load (3/4/5)
   6. Class-day spread     — grouped bar: 2/3/4/5-day weeks
+  7. Gap distribution     — % of gaps (before/between/after class) by duration bucket
 """
 
 from __future__ import annotations
@@ -16,6 +17,7 @@ from __future__ import annotations
 import json
 import statistics
 import sys
+from collections import Counter
 from pathlib import Path
 
 import matplotlib
@@ -58,6 +60,58 @@ def load_data():
     pr_metrics = [_student_metrics(s["courses"], pr_block) for s in pr_raw["schedules"]]
 
     return ex_raw, pr_raw, _aggregate(ex_metrics), _aggregate(pr_metrics)
+
+
+# ---------------------------------------------------------------------------
+# Gap distribution
+# ---------------------------------------------------------------------------
+
+GAP_BUCKETS = [
+    (  0,  30, " 0–30 min"),
+    ( 30,  60, "30–60 min"),
+    ( 60,  90, "60–90 min"),
+    ( 90, 120, "90–120 min"),
+    (120, 180, "120–180 min"),
+    (180, 240, "180–240 min"),
+    (240, None, "240+ min"),
+]
+
+
+def _all_gaps(schedules, block_map):
+    """Collect every before/between/after gap (minutes) across all student days."""
+    from collections import defaultdict
+    gaps = []
+    for s in schedules:
+        by_day = defaultdict(list)
+        for c in s["courses"]:
+            b = block_map.get(c["block"])
+            if b is None:
+                continue
+            for day in b.days:
+                by_day[day].append(b)
+        for day in DAY_ORDER:
+            blocks = sorted(by_day.get(day, []), key=lambda b: b.start)
+            if not blocks:
+                continue
+            gaps.append(blocks[0].start.hour * 60 + blocks[0].start.minute - DAY_START_M)
+            for i in range(len(blocks) - 1):
+                g = (blocks[i+1].start.hour * 60 + blocks[i+1].start.minute
+                     - blocks[i].end.hour * 60 - blocks[i].end.minute)
+                gaps.append(max(0, g))
+            gaps.append(DAY_END_M - (blocks[-1].end.hour * 60 + blocks[-1].end.minute))
+    return gaps
+
+
+def _bucket_gaps(gaps):
+    counts = Counter()
+    for g in gaps:
+        if g < 0:
+            continue
+        for lo, hi, label in GAP_BUCKETS:
+            if hi is None or g < hi:
+                counts[label] += 1
+                break
+    return counts
 
 
 # ---------------------------------------------------------------------------
@@ -126,13 +180,13 @@ def main():
     print("Loading data…")
     ex_raw, pr_raw, ex_agg, pr_agg = load_data()
 
-    fig = plt.figure(figsize=(18, 24), constrained_layout=True)
+    fig = plt.figure(figsize=(18, 30), constrained_layout=True)
     fig.suptitle(
         "Block Scheduling — Existing vs Proposed\n"
         "1,500 simulated student schedules · weighted by historical usage (F2016–F2020)",
         fontsize=15, fontweight="bold",
     )
-    gs = fig.add_gridspec(4, 2, height_ratios=[1.3, 1.0, 1.1, 1.0])
+    gs = fig.add_gridspec(5, 2, height_ratios=[1.3, 1.0, 1.1, 1.0, 1.0])
 
     # ── 1. Block usage (full width) ──────────────────────────────────────────
     ax1 = fig.add_subplot(gs[0, :])
@@ -283,6 +337,39 @@ def main():
                   ylabel="% of students",
                   title="Class-day spread — distinct days/week with at least one class",
                   pct=True)
+
+    # ── 7. Gap distribution (full width) ─────────────────────────────────────
+    ax7 = fig.add_subplot(gs[4, :])
+
+    ex_gaps = _all_gaps(ex_raw["schedules"], ex_block)
+    pr_gaps = _all_gaps(pr_raw["schedules"], pr_block)
+    ex_bc = _bucket_gaps(ex_gaps)
+    pr_bc = _bucket_gaps(pr_gaps)
+    ex_gt = sum(ex_bc.values())
+    pr_gt = sum(pr_bc.values())
+
+    labels7  = [label for _, _, label in GAP_BUCKETS]
+    ex_pcts7 = [100 * ex_bc[l] / ex_gt for l in labels7]
+    pr_pcts7 = [100 * pr_bc[l] / pr_gt for l in labels7]
+
+    _grouped_bars(ax7, labels7, ex_pcts7, pr_pcts7,
+                  "Existing", "Proposed",
+                  ylabel="% of all gaps",
+                  title=(
+                      "Gap distribution — before first class, between classes, after last class\n"
+                      f"(8am–5pm window · Existing: {ex_gt:,} gaps · Proposed: {pr_gt:,} gaps)"
+                  ),
+                  pct=True)
+
+    # annotate delta above each pair
+    x7 = np.arange(len(labels7))
+    w7 = 0.38
+    for i, (ep, pp) in enumerate(zip(ex_pcts7, pr_pcts7)):
+        d = pp - ep
+        sign = "+" if d >= 0 else ""
+        top = max(ep, pp) + 0.4
+        ax7.text(i, top, f"{sign}{d:.1f}%", ha="center", va="bottom",
+                 fontsize=8, color="dimgray", fontweight="bold")
 
     fig.savefig(OUT, dpi=130, bbox_inches="tight")
     print(f"Saved → {OUT}")
