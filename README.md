@@ -1,12 +1,6 @@
 # block_scheduling
 
-A Python toolkit for analyzing and comparing course block schedules at the college level. It provides three modes of analysis:
-
-1. **Gap analysis** — for a given schedule, shows the free-time gaps between consecutive blocks on each day of the week.
-2. **Monte Carlo simulation** — simulates 10,000 student schedules drawn from the block pool (weighted by historical enrollment data) and reports free-time distributions, conflict rates, and weekly contact hours.
-3. **Schedule comparison** — places two schedules side by side and shows how gap time changes day-by-day and weekly.
-
-An optional chart generator (`src/charts.py`) produces a multi-panel PNG summarizing the simulation results.
+A Python toolkit for analyzing and comparing college course block schedules. It generates synthetic student schedules from a real course pool, measures free-time gaps, conflict rates, and contact hours, and produces comparison charts for two schedules side by side.
 
 ---
 
@@ -14,31 +8,35 @@ An optional chart generator (`src/charts.py`) produces a multi-panel PNG summari
 
 ```
 block_scheduling/
-├── main.py                   # Entry point — runs all analyses
+├── main.py                          # Gap analysis + Monte Carlo simulation (text output)
 ├── data/
-│   ├── existing_schedule.json  # Current block schedule
-│   └── proposed_schedule.json  # Proposed/alternative schedule (optional)
+│   ├── existing_schedule.json       # Current block schedule
+│   ├── proposed_schedule.json       # Proposed/alternative schedule
+│   ├── schedule_existing_500.json   # 500-course pool for existing schedule
+│   ├── schedule_proposed_500.json   # 500-course pool for proposed schedule
+│   └── student_schedules_1500.json  # 1,500 simulated student schedules (generated)
 ├── src/
-│   ├── schedule.py           # Data model: Schedule and TimeBlock
-│   ├── analyze.py            # Single-schedule gap analysis report
-│   ├── simulate.py           # Monte Carlo simulation + text report
-│   ├── compare.py            # Side-by-side schedule comparison
-│   └── charts.py             # Matplotlib chart generator (optional)
-└── .venv/                    # Python virtual environment
+│   ├── schedule.py                  # Data model: Schedule and TimeBlock
+│   ├── analyze.py                   # Single-schedule gap analysis (text report)
+│   ├── simulate.py                  # Monte Carlo simulation + text report
+│   ├── compare.py                   # Side-by-side schedule comparison (text report)
+│   ├── generate_schedules.py        # Build 500-course pools for each schedule
+│   ├── generate_student_schedules.py # Generate 1,500 student schedules per schedule
+│   ├── analyze_student_schedules.py  # Aggregate metrics from student_schedules_1500.json
+│   ├── charts.py                    # Single-schedule Monte Carlo charts (charts.png)
+│   └── charts_comparison.py         # Comparison charts (charts_comparison.png)
+└── .venv/                           # Python virtual environment
 ```
 
 ---
 
 ## Setup
 
-**Requirements:** Python 3.11+
+**Requirements:** Python 3.11+, `matplotlib` (charts only)
 
 ```bash
-# Create and activate the virtual environment
 python3 -m venv .venv
 source .venv/bin/activate
-
-# Install dependencies (only needed for charts.py)
 pip install matplotlib
 ```
 
@@ -47,38 +45,98 @@ pip install matplotlib
 ## Running
 
 ```bash
-# Activate the virtual environment first
 source .venv/bin/activate
 
-# Run gap analysis + simulation (and comparison if proposed_schedule.json has blocks)
+# Text: gap analysis + Monte Carlo simulation for each schedule, plus comparison
 python main.py
 
-# Generate charts (saves charts.png in the project root)
+# Build 500-course pools (required before generating student schedules)
+python src/generate_schedules.py
+
+# Generate 1,500 student schedules per schedule → data/student_schedules_1500.json
+python src/generate_student_schedules.py
+
+# Text: aggregate metrics from the 1,500 student schedules
+python src/analyze_student_schedules.py
+
+# Charts: single-schedule Monte Carlo summary → charts.png
 python src/charts.py
+
+# Charts: existing vs proposed comparison → charts_comparison.png
+python src/charts_comparison.py
 ```
 
 ---
 
-## What the output shows
+## Simulator parameters
 
-### Gap analysis
-A per-day table of block start/end times and the free-time gap after each block, plus a daily and weekly total.
+### Monte Carlo simulation (`simulate.py`)
 
-### Monte Carlo simulation
-Simulates 10,000 students each taking 3–5 courses, selected at random from the block pool. Block selection is **weighted by historical course counts** aggregated from Fall 2016–Fall 2020 (sourced from the CAS scheduling database).
+Used by `main.py` and `charts.py`.
 
-- **Student workday window:** 8am–5pm, Mon–Fri. Evening blocks (ending after 5pm) are included in the pool with their historical weights (~6.4% of all courses).
-- **Conflict detection:** schedules with overlapping blocks are counted and excluded from the free-time analysis.
-- Reports mean/median/p25/p75 free time per day, weekly free-time distribution, and weekly contact hours broken down by 3-, 4-, and 5-course loads.
+| Parameter | Value |
+|---|---|
+| Attempts per schedule | 10,000 |
+| Random seed | 42 |
+| Student workday | Mon–Fri, 8:00 am – 5:00 pm |
+| Class load | 3–5 courses (uniform random integer) |
+| Daytime block eligibility | start ≥ 8:00 am and end ≤ 5:00 pm |
+| Evening block eligibility | start ≥ 8:00 am and end > 5:00 pm |
+| Selection weight | Historical course count, Fall 2016 – Fall 2020 (9 terms) |
+| Fallback weight (unrecognized blocks) | 1.0 |
+| Conflict rule | Any two blocks sharing a day with overlapping times |
+| Conflicting draws | Counted and excluded from gap/contact analysis |
 
-### Schedule comparison
-A table showing free-time minutes for each day of the week under the existing and proposed schedules, with the delta highlighted.
+Evening blocks accounted for ~6.4% of all scheduled courses historically (222 of 3,472 across the 9-term window) and are sampled at that rate.
+
+### Student schedule generator (`generate_student_schedules.py`)
+
+Used by `analyze_student_schedules.py` and `charts_comparison.py`.
+
+| Parameter | Value |
+|---|---|
+| Course pool size | 500 courses per schedule |
+| Target valid schedules | 1,500 per schedule |
+| Random seed | 42 |
+| Class load | 3–5 courses (uniform random integer) |
+| Selection weight | Same historical weights as above |
+| Proposed block weights | Inherited from the source block each proposed block was mapped from |
+| Conflict rule | Same as above (shared day + time overlap) |
+| Conflicting draws | Counted and discarded; drawing continues until target is reached |
+
+#### Block mapping (existing → proposed)
+
+Each existing block is mapped to the nearest proposed block using a composite distance:
+
+```
+distance = (day_mismatch × 50) + |midpoint_A − midpoint_B| + |norm_duration_A − norm_duration_B| × 0.5
+```
+
+Duration equivalences treated as zero distance:
+
+| Existing | Proposed |
+|---|---|
+| 70 min | 50 min |
+| 100–140 min | 110 min |
+| ≥ 120 min | 170 min |
+
+---
+
+## Comparison charts (`charts_comparison.png`)
+
+Seven panels generated by `src/charts_comparison.py`:
+
+1. **Block usage** — share of student-course selections per block (grouped bar)
+2. **Weekly free time** — overlapping histograms, existing vs proposed
+3. **Conflict rate** — stacked bars: valid vs conflicted schedule attempts
+4. **Free time per day** — side-by-side box plots by day of week
+5. **Contact hours** — side-by-side box plots by class load (3/4/5 courses)
+6. **Class-day spread** — % of students with class on 2/3/4/5 days per week
+7. **Gap distribution** — % of all before/between/after-class gaps by duration bucket (0–1 hr, 1–2 hrs, … 5+ hrs), with existing vs proposed delta labeled on each bar
 
 ---
 
 ## Schedule data format
-
-Schedules are defined as JSON files in `data/`. Each file follows this structure:
 
 ```json
 {
@@ -96,5 +154,3 @@ Schedules are defined as JSON files in `data/`. Each file follows this structure
 
 - `days` uses single-letter codes: `M` Mon, `T` Tue, `W` Wed, `R` Thu, `F` Fri.
 - `start` and `end` are 24-hour `HH:MM` strings.
-
-To analyze a proposed schedule, populate `data/proposed_schedule.json` with the same format. If it contains no blocks, the comparison step is skipped.
