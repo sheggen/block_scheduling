@@ -71,14 +71,6 @@ def _mins(t: time) -> int:
     return t.hour * 60 + t.minute
 
 
-_SPECIALTY_KEYWORDS = ("extended", "experiential", "art studio")
-
-
-def _specialty(block: TimeBlock) -> bool:
-    """True if the block is a specialty type (extended, experiential lab, art studio)."""
-    lower = block.name.lower()
-    return any(k in lower for k in _SPECIALTY_KEYWORDS)
-
 
 def _eligible(block: TimeBlock) -> bool:
     """True if the block falls entirely within 7am–6pm on weekdays only (daytime)."""
@@ -171,10 +163,9 @@ def run(schedule: Schedule, n: int = 10_000, seed: int | None = None) -> Simulat
     if seed is not None:
         random.seed(seed)
 
-    day_pool  = [b for b in schedule.time_blocks if _eligible(b) and not _specialty(b)]
-    spec_pool = [b for b in schedule.time_blocks if _eligible(b) and _specialty(b)]
-    eve_pool  = [b for b in schedule.time_blocks if _evening_eligible(b)]
-    pool      = day_pool + spec_pool + eve_pool
+    day_pool = [b for b in schedule.time_blocks if _eligible(b)]
+    eve_pool = [b for b in schedule.time_blocks if _evening_eligible(b)]
+    pool     = day_pool + eve_pool
     weights   = [
         HISTORICAL_WEIGHTS.get(b.name, HISTORICAL_FALLBACK_WEIGHT)
         for b in pool
