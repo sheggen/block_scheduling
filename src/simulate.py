@@ -2,7 +2,7 @@
 Monte Carlo simulation of student schedules.
 
 Assumptions:
-- Students prefer classes between 7am and 6pm, Monday–Friday (daytime window).
+- Students prefer classes between 8am and 5pm, Monday–Friday (daytime window).
 - Evening blocks (weekday, start >= 7am, end after 6pm) are included but are
   only 10% as likely to be chosen as a base daytime block.
 - Each student takes 3–5 classes, chosen randomly.
@@ -21,8 +21,8 @@ from typing import NamedTuple
 from schedule import Schedule, TimeBlock, DAY_ORDER, DAY_NAMES
 
 # Student availability window
-STUDENT_DAY_START = time(7, 0)
-STUDENT_DAY_END   = time(18, 0)
+STUDENT_DAY_START = time(8, 0)
+STUDENT_DAY_END   = time(17, 0)
 
 # Peak popularity window
 PEAK_START = time(10, 0)
@@ -226,7 +226,7 @@ def report(result: SimulationResult) -> None:
     print(f"Simulation: {result.schedule_name}   n={result.n_attempts:,} attempts")
     print("=" * 70)
 
-    print(f"\nStudent work day: 7am–6pm, Mon–Fri; specialty & evening blocks selectable at {EVENING_WEIGHT:.0%} weight")
+    print(f"\nStudent work day: 8am–5pm, Mon–Fri; specialty & evening blocks selectable at {EVENING_WEIGHT:.0%} weight")
     print(f"Conflict check  : {result.n_conflicts:,} of {result.n_attempts:,} schedules had overlapping blocks "
           f"({result.conflict_pct:.1f}%) — excluded from analysis")
     print(f"Valid schedules : {result.n_valid:,}")
