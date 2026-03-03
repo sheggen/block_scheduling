@@ -76,14 +76,14 @@ def main():
     probs = _selection_probs(sched)
 
     # -----------------------------------------------------------------------
-    fig = plt.figure(figsize=(18, 22), constrained_layout=True)
+    fig = plt.figure(figsize=(18, 18), constrained_layout=True)
     fig.suptitle(
         f"Block Scheduling — Monte Carlo Simulation\n"
         f"{sched.name}  ·  {N:,} simulated students",
         fontsize=15, fontweight="bold",
     )
 
-    gs = fig.add_gridspec(4, 2, height_ratios=[1.1, 1, 1.1, 1.3])
+    gs = fig.add_gridspec(4, 2, height_ratios=[1.1, 1, 1.1, 1.1])
 
     # ── 1. Block selection probability ──────────────────────────────────────
     ax1 = fig.add_subplot(gs[0, :])
@@ -155,31 +155,8 @@ def main():
         med = statistics.median(res.day_gaps[d]) / 60
         ax4.text(i, med + 0.05, f"{med:.1f}h", ha="center", va="bottom", fontsize=8, color="black")
 
-    # ── 5. Contact hours by class load ───────────────────────────────────────
-    ax5 = fig.add_subplot(gs[3, 0])
-    n_cls_vals = [4, 5, 6]
-    contact_data = [
-        [m / 60 for m in res.class_mins_by_n[n]] for n in n_cls_vals
-    ]
-    bp5 = ax5.boxplot(
-        contact_data,
-        patch_artist=True,
-        medianprops=dict(color="black", linewidth=2),
-        boxprops=dict(facecolor=ACCENT, alpha=0.7),
-        whiskerprops=dict(linewidth=1.2),
-        capprops=dict(linewidth=1.2),
-        flierprops=dict(marker=".", markersize=2, alpha=0.3, color=ACCENT),
-    )
-    ax5.set_xticklabels([f"{n} classes" for n in n_cls_vals])
-    ax5.set_ylabel("Weekly contact hours")
-    ax5.set_title("Weekly contact hours by class load")
-    ax5.grid(axis="y", alpha=0.3)
-    for i, data in enumerate(contact_data, start=1):
-        med = statistics.median(data)
-        ax5.text(i, med + 0.05, f"{med:.1f}h", ha="center", va="bottom", fontsize=8)
-
-    # ── 6. Top conflict pairs ─────────────────────────────────────────────────
-    ax6 = fig.add_subplot(gs[3, 1])
+    # ── 5. Top conflict pairs ─────────────────────────────────────────────────
+    ax6 = fig.add_subplot(gs[3, :])
     top_n = 10
     top_pairs = pairs.most_common(top_n)
     pair_labels = [f"{a}  ×\n{b}" for (a, b), _ in reversed(top_pairs)]

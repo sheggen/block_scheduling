@@ -179,13 +179,13 @@ def main():
     print("Loading data…")
     ex_raw, pr_raw, ex_agg, pr_agg = load_data()
 
-    fig = plt.figure(figsize=(18, 30), constrained_layout=True)
+    fig = plt.figure(figsize=(18, 24), constrained_layout=True)
     fig.suptitle(
         "Block Scheduling — Existing vs Proposed\n"
         "1,500 simulated student schedules · weighted by historical usage (F2016–F2020)",
         fontsize=15, fontweight="bold",
     )
-    gs = fig.add_gridspec(5, 2, height_ratios=[1.3, 1.0, 1.1, 1.0, 1.0])
+    gs = fig.add_gridspec(4, 2, height_ratios=[1.3, 1.0, 1.1, 1.0])
 
     # ── 1. Block usage (full width) ──────────────────────────────────────────
     ax1 = fig.add_subplot(gs[0, :])
@@ -270,75 +270,14 @@ def main():
         ax4.text(positions_b[i], med_b + 8, f"{med_b:.0f}", ha="center", va="bottom",
                  fontsize=7.5, color=PR_COLOR, fontweight="bold")
 
-    # ── 5. Contact hours by class load ───────────────────────────────────────
-    ax5 = fig.add_subplot(gs[3, 0])
-    ex_loads = [s["n_classes"] for s in ex_raw["schedules"]]
-    pr_loads = [s["n_classes"] for s in pr_raw["schedules"]]
-    ex_by_load = {n: [] for n in (4, 5, 6)}
-    pr_by_load = {n: [] for n in (4, 5, 6)}
-
-    for s, m in zip(ex_raw["schedules"],
-                    [dict(n=s["n_classes"], c=sum(
-                        b.duration_minutes * len(b.days)
-                        for b in []))
-                     for s in ex_raw["schedules"]]):
-        pass  # placeholder — recompute below from agg contact
-
-    # Recompute contact by load using full metrics
+    # Block maps needed for gap distribution
     existing_sched = Schedule.from_json(DATA_DIR / "existing_schedule.json")
     proposed_sched = Schedule.from_json(DATA_DIR / "proposed_schedule.json")
     ex_block = {b.name: b for b in existing_sched.time_blocks}
     pr_block = {b.name: b for b in proposed_sched.time_blocks}
 
-    for s in ex_raw["schedules"]:
-        n = s["n_classes"]
-        contact = sum(
-            ex_block[c["block"]].duration_minutes * len(ex_block[c["block"]].days)
-            for c in s["courses"] if c["block"] in ex_block
-        )
-        ex_by_load[n].append(contact / 60)
-
-    for s in pr_raw["schedules"]:
-        n = s["n_classes"]
-        contact = sum(
-            pr_block[c["block"]].duration_minutes * len(pr_block[c["block"]].days)
-            for c in s["courses"] if c["block"] in pr_block
-        )
-        pr_by_load[n].append(contact / 60)
-
-    load_labels = ["4 classes", "5 classes", "6 classes"]
-    _side_boxplot(ax5,
-                  [ex_by_load[n] for n in (4, 5, 6)],
-                  [pr_by_load[n] for n in (4, 5, 6)],
-                  load_labels, "Existing", "Proposed",
-                  ylabel="Weekly contact hours",
-                  title="Weekly contact hours by class load")
-    positions_a5 = [i * 3 + 0.6 for i in range(3)]
-    positions_b5 = [i * 3 + 1.8 for i in range(3)]
-    for i, n in enumerate((4, 5, 6)):
-        med_a = statistics.median(ex_by_load[n]) if ex_by_load[n] else 0
-        med_b = statistics.median(pr_by_load[n]) if pr_by_load[n] else 0
-        ax5.text(positions_a5[i], med_a + 0.05, f"{med_a:.1f}h", ha="center", va="bottom",
-                 fontsize=7.5, color=EX_COLOR, fontweight="bold")
-        ax5.text(positions_b5[i], med_b + 0.05, f"{med_b:.1f}h", ha="center", va="bottom",
-                 fontsize=7.5, color=PR_COLOR, fontweight="bold")
-
-    # ── 6. Class-day spread ───────────────────────────────────────────────────
-    ax6 = fig.add_subplot(gs[3, 1])
-    cd_ex = ex_agg["class_days"]
-    cd_pr = pr_agg["class_days"]
-    day_counts = [2, 3, 4, 5]
-    ex_spread = [100 * cd_ex.count(d) / len(cd_ex) for d in day_counts]
-    pr_spread = [100 * cd_pr.count(d) / len(cd_pr) for d in day_counts]
-    _grouped_bars(ax6, [f"{d} days" for d in day_counts],
-                  ex_spread, pr_spread,
-                  "Existing", "Proposed",
-                  ylabel="% of students",
-                  title="Class-day spread — distinct days/week with at least one class",
-                  pct=True)
-
-    # ── 7. Gap distribution (full width) ─────────────────────────────────────
-    ax7 = fig.add_subplot(gs[4, :])
+    # ── 5. Gap distribution (full width) ─────────────────────────────────────
+    ax7 = fig.add_subplot(gs[3, :])
 
     ex_gaps = _all_gaps(ex_raw["schedules"], ex_block)
     pr_gaps = _all_gaps(pr_raw["schedules"], pr_block)
