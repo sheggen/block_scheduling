@@ -10,8 +10,8 @@ using a composite distance:
 
 Duration equivalences (treated as zero distance):
   - 50min (proposed) == 70min (existing)
-  - 110min (existing) == 140min (proposed)
-  - 110min (existing) == 170min (proposed)
+  - 110min (existing) == 100min or 140min (proposed)
+  - 120+min (existing) == 170min (proposed)
 """
 
 from __future__ import annotations
@@ -52,9 +52,11 @@ def _duration(b: TimeBlock) -> int:
 def _dur_class(minutes: int) -> int:
     """Normalize duration into an equivalence class (in canonical minutes)."""
     if minutes in (50, 70):
-        return 60       # 50min and 70min are equivalent
-    if minutes in (110, 140, 170):
-        return 140      # 110min, 140min, and 170min are equivalent
+        return 60       # 50min (proposed) == 70min (existing)
+    if minutes in (100, 110, 140):
+        return 120      # 110min (existing) == 100min or 140min (proposed)
+    if minutes >= 120:
+        return 170      # 120+min (existing) == 170min (proposed)
     return minutes
 
 
