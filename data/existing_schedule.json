@@ -1,0 +1,33 @@
+{
+  "name": "Existing Schedule",
+  "time_blocks": [
+    {"name": "MWF Standard A",            "days": ["M","W","F"], "start": "08:00", "end": "09:10"},
+    {"name": "MWF 3-day long block A",    "days": ["M","W","F"], "start": "08:00", "end": "09:50"},
+    {"name": "MW long block D",           "days": ["M","W"],     "start": "08:00", "end": "09:50"},
+    {"name": "MW Extended Block A",       "days": ["M","W"],     "start": "08:30", "end": "11:30"},
+    {"name": "MW long block E",           "days": ["M","W"],     "start": "08:40", "end": "10:30"},
+    {"name": "MW Advanced Art Studio A-2","days": ["M","W"],     "start": "09:00", "end": "11:50"},
+    {"name": "MWF Standard B",            "days": ["M","W","F"], "start": "09:20", "end": "10:30"},
+    {"name": "MWF Standard C",            "days": ["M","W","F"], "start": "10:40", "end": "11:50"},
+    {"name": "MWF 3-day long block B",    "days": ["M","W","F"], "start": "10:40", "end": "12:30"},
+    {"name": "MWF Standard D",            "days": ["M","W","F"], "start": "12:00", "end": "13:10"},
+    {"name": "MW long block A",           "days": ["M","W"],     "start": "12:40", "end": "14:30"},
+    {"name": "MWF Standard E",            "days": ["M","W","F"], "start": "13:20", "end": "14:30"},
+    {"name": "MWF Standard F",            "days": ["M","W","F"], "start": "14:40", "end": "15:50"},
+    {"name": "MWF 3-day long block C",    "days": ["M","W","F"], "start": "14:40", "end": "16:30"},
+    {"name": "MW Extended Block B",       "days": ["M","W"],     "start": "14:40", "end": "17:30"},
+    {"name": "MWF Standard G",            "days": ["M","W","F"], "start": "16:00", "end": "17:10"},
+    {"name": "MW long block B",           "days": ["M","W"],     "start": "16:00", "end": "17:50"},
+    {"name": "MW long block C",           "days": ["M","W"],     "start": "19:00", "end": "20:50"},
+    {"name": "TR long block A",           "days": ["T","R"],     "start": "08:00", "end": "09:50"},
+    {"name": "TR Experiential Lab Block A-2","days": ["T","R"],  "start": "08:00", "end": "11:30"},
+    {"name": "TR extended block A",       "days": ["T","R"],     "start": "08:30", "end": "11:30"},
+    {"name": "TR Advanced Art Studio A-3","days": ["T","R"],     "start": "09:00", "end": "11:50"},
+    {"name": "TR Experiential Lab Block A-3","days": ["T","R"],  "start": "09:00", "end": "11:30"},
+    {"name": "TR long block B",           "days": ["T","R"],     "start": "10:00", "end": "11:50"},
+    {"name": "TR extended block B",       "days": ["T","R"],     "start": "12:00", "end": "14:50"},
+    {"name": "TR long block C",           "days": ["T","R"],     "start": "13:00", "end": "14:50"},
+    {"name": "Tuesday Astronomy Lab",     "days": ["T"],         "start": "19:00", "end": "21:00"},
+    {"name": "Friday Experiential Lab Block","days": ["F"],      "start": "14:40", "end": "17:30"}
+  ]
+}
