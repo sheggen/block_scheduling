@@ -111,6 +111,7 @@ class SimulationResult(NamedTuple):
     n_conflicts: int
     weekly_gaps: list[int]
     day_gaps: dict[str, list[int]]
+    class_mins_by_n: dict[int, list[int]]   # n_classes → [weekly contact minutes, ...]
 
     @property
     def n_valid(self) -> int:
@@ -131,6 +132,7 @@ def run(schedule: Schedule, n: int = 10_000, seed: int | None = None) -> Simulat
     n_conflicts = 0
     weekly_gaps: list[int] = []
     day_gaps: dict[str, list[int]] = {day: [] for day in DAY_ORDER}
+    class_mins_by_n: dict[int, list[int]] = {3: [], 4: [], 5: []}
 
     for _ in range(n):
         n_classes = random.randint(3, 5)
@@ -145,12 +147,17 @@ def run(schedule: Schedule, n: int = 10_000, seed: int | None = None) -> Simulat
         for day in DAY_ORDER:
             day_gaps[day].append(gaps[day])
 
+        # Weekly contact time = each block's duration × number of days it meets
+        contact = sum(b.duration_minutes * len(b.days) for b in student)
+        class_mins_by_n[len(student)].append(contact)
+
     return SimulationResult(
         schedule_name=schedule.name,
         n_attempts=n,
         n_conflicts=n_conflicts,
         weekly_gaps=weekly_gaps,
         day_gaps=day_gaps,
+        class_mins_by_n=class_mins_by_n,
     )
 
 
@@ -220,4 +227,18 @@ def report(result: SimulationResult) -> None:
 
     print(f"\nDistribution of weekly free time (minutes)")
     _histogram(wg)
+
+    print(f"\nAverage weekly hours IN class by load group")
+    print(f"  {'Classes':<10} {'Students':>9} {'Mean hrs':>10} {'Median hrs':>12} {'Min hrs':>9} {'Max hrs':>9}")
+    print(f"  {'-'*10} {'-'*9} {'-'*10} {'-'*12} {'-'*9} {'-'*9}")
+    for n_cls in (3, 4, 5):
+        data = result.class_mins_by_n[n_cls]
+        if not data:
+            print(f"  {n_cls:<10} {'—':>9}")
+            continue
+        mean_h  = statistics.mean(data)  / 60
+        med_h   = statistics.median(data) / 60
+        min_h   = min(data) / 60
+        max_h   = max(data) / 60
+        print(f"  {n_cls:<10} {len(data):>9,} {mean_h:>9.2f}h {med_h:>11.2f}h {min_h:>8.2f}h {max_h:>8.2f}h")
     print("=" * 70)
